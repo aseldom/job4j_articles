@@ -13,10 +13,7 @@ public class MaxMin {
     }
 
     private  <T> T minMax(List<T> value, Comparator<T> comparator, int minMax) {
-        if (value.isEmpty()) {
-            return null;
-        }
-        T res = value.get(0);
+        T res = value.isEmpty() ? null : value.get(0);
         for (T v : value) {
             res = comparator.compare(res, v) * minMax > 0 ? res : v;
         }
