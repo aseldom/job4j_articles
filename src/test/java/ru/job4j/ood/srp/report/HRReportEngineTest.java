@@ -1,0 +1,37 @@
+package ru.job4j.ood.srp.report;
+
+import org.junit.jupiter.api.Test;
+import ru.job4j.ood.srp.model.Employee;
+import ru.job4j.ood.srp.store.MemStore;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class HRReportEngineTest {
+
+    @Test
+    public void HRReportTest() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Comparator<Employee> comparator = Comparator.comparingDouble(Employee::getSalary).reversed();
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("Ivan", now, now, 300));
+        employees.add(new Employee("Oleg", now, now, 200));
+        employees.add(new Employee("Mihail", now, now, 100));
+        store.add(employees.get(1));
+        store.add(employees.get(2));
+        store.add(employees.get(0));
+        Report engine = new HRReportEngine(store, comparator);
+        StringBuilder expect = new StringBuilder().append("Name; Salary;").append(System.lineSeparator());
+        for (Employee employee : employees) {
+            expect.append(employee.getName()).append(" ")
+                    .append(employee.getSalary())
+                    .append(System.lineSeparator());
+        }
+        assertThat(engine.generate(em -> true)).isEqualTo(expect.toString());
+    }
+}
