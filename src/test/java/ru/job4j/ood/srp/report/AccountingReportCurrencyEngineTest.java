@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AccountingReportCurrencyEngineTest {
 
     @Test
-    public void WhenTargetCurrencyDollar() {
+    public void whenTargetCurrencyDollar() {
         Currency currency = Currency.USD;
         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();
@@ -37,7 +37,7 @@ public class AccountingReportCurrencyEngineTest {
     }
 
     @Test
-    public void WhenTargetCurrencyEuro() {
+    public void whenTargetCurrencyEuro() {
         Currency currency = Currency.EUR;
         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();

@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class HRReportEngineTest {
 
     @Test
-    public void HRReportTest() {
+    public void hRReportTest() {
         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();
         Comparator<Employee> comparator = Comparator.comparingDouble(Employee::getSalary).reversed();

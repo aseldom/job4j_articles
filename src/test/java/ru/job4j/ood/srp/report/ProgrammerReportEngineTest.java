@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ProgrammerReportEngineTest {
 
     @Test
-    public void ProgrammerReportTest() {
+    public void programmerReportTest() {
         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
