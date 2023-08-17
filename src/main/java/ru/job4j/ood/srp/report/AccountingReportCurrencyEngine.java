@@ -16,8 +16,9 @@ public class AccountingReportCurrencyEngine implements Report {
     private final DateTimeParser<Calendar> dateTimeParser;
     private final Currency currency;
 
-    public AccountingReportCurrencyEngine(Store store
-            , DateTimeParser<Calendar> dateTimeParser, Currency currency) {
+    public AccountingReportCurrencyEngine(Store store,
+                                          DateTimeParser<Calendar> dateTimeParser,
+                                          Currency currency) {
         this.store = store;
         this.dateTimeParser = dateTimeParser;
         this.currency = currency;
