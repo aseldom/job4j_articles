@@ -26,11 +26,11 @@ public class HRReportEngineTest {
         store.add(employees.get(2));
         store.add(employees.get(0));
         Report engine = new HRReportEngine(store, comparator);
-        StringBuilder expect = new StringBuilder().append("Name; Salary;").append(System.lineSeparator());
+        StringBuilder expect = new StringBuilder().append("Name; Salary;");
         for (Employee employee : employees) {
-            expect.append(employee.getName()).append(" ")
-                    .append(employee.getSalary())
-                    .append(System.lineSeparator());
+            expect.append(System.lineSeparator())
+                    .append(employee.getName()).append(" ")
+                    .append(employee.getSalary());
         }
         assertThat(engine.generate(em -> true)).isEqualTo(expect.toString());
     }

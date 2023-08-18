@@ -25,12 +25,11 @@ public class HRReportEngine implements Report {
                 .stream()
                 .sorted(comparator)
                 .toList();
-        text.append("Name; Salary;")
-                .append(System.lineSeparator());
+        text.append("Name; Salary;");
         for (Employee employee : employees) {
-            text.append(employee.getName()).append(" ")
-                    .append(employee.getSalary())
-                    .append(System.lineSeparator());
+            text.append(System.lineSeparator())
+                    .append(employee.getName()).append(" ")
+                    .append(employee.getSalary());
         }
         return text.toString();
     }
