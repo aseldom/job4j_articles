@@ -12,28 +12,35 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ProgrammerReportEngineTest {
+public class JsonReportEngineTest {
 
     @Test
-    public void programmerReportTest() {
+    public void jsonReportTest() {
         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
         List<Employee> employees = new ArrayList<>();
-        String delimiter = "\r\n";
         employees.add(new Employee("Ivan", now, now, 300));
         employees.add(new Employee("Oleg", now, now, 200));
         employees.add(new Employee("Mihail", now, now, 100));
         employees.forEach(store::add);
-        Report engine = new ProgrammerReportEngine(store, parser);
-        StringBuilder expect = new StringBuilder().append("Name,Hired,Fired,Salary");
+        String delimiter = "\n";
+        Report engine = new JsonReportEngine(store, parser);
+        StringBuilder expect = new StringBuilder().append("[");
         for (Employee employee : employees) {
             expect.append(delimiter)
-                    .append(employee.getName()).append(",")
-                    .append(parser.parse(employee.getHired())).append(",")
-                    .append(parser.parse(employee.getFired())).append(",")
-                    .append(employee.getSalary());
+                    .append("  {").append(delimiter)
+                    .append("    \"name\": \"").append(employee.getName())
+                    .append("\",").append(delimiter)
+                    .append("    \"hired\": \"").append(parser.parse(employee.getHired()))
+                    .append("\",").append(delimiter)
+                    .append("    \"fired\": \"").append(parser.parse(employee.getFired()))
+                    .append("\",").append(delimiter)
+                    .append("    \"salary\": ").append(employee.getSalary())
+                    .append(delimiter)
+                    .append("  },");
         }
+        expect.deleteCharAt(expect.length() - 1).append(delimiter).append("]");
         assertThat(engine.generate(em -> true)).isEqualTo(expect.toString());
     }
 }

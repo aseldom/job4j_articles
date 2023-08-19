@@ -22,9 +22,7 @@ public class HRReportEngineTest {
         employees.add(new Employee("Ivan", now, now, 300));
         employees.add(new Employee("Oleg", now, now, 200));
         employees.add(new Employee("Mihail", now, now, 100));
-        store.add(employees.get(1));
-        store.add(employees.get(2));
-        store.add(employees.get(0));
+        employees.forEach(store::add);
         Report engine = new HRReportEngine(store, comparator);
         StringBuilder expect = new StringBuilder().append("Name; Salary;");
         for (Employee employee : employees) {
