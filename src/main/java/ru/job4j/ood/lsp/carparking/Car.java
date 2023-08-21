@@ -1,6 +1,6 @@
 package ru.job4j.ood.lsp.carparking;
 
-public abstract class Car {
+public class Car {
 
     String name;
     int size;
