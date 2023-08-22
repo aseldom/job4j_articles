@@ -4,7 +4,7 @@ public class PassengerCar extends AbstractCar {
 
     public PassengerCar(int size, String number) {
         super(size, number);
-        simpleParkingPlace = true;
+        setSimpleParkingPlace(true);
     }
 
     @Override

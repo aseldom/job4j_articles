@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public abstract class AbstractCar implements Car {
 
-    Parking parking;
-    boolean simpleParkingPlace;
-    int size;
-    String number;
+    private Parking parking;
+    private boolean simpleParkingPlace;
+    private final int size;
+    private final String number;
 
     public AbstractCar(int size, String number) {
         this.size = size;
@@ -47,6 +47,14 @@ public abstract class AbstractCar implements Car {
 
     public void setParking(Parking parking) {
         this.parking = parking;
+    }
+
+    public boolean getSimpleParkingPlace() {
+        return simpleParkingPlace;
+    }
+
+    public void setSimpleParkingPlace(boolean simpleParkingPlace) {
+        this.simpleParkingPlace = simpleParkingPlace;
     }
 
     @Override

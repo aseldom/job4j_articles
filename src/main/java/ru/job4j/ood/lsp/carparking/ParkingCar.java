@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ParkingCar implements Parking {
 
-    List<Car> allCars = new ArrayList<>();
+    private final List<Car> allCars = new ArrayList<>();
     private int freeCarSpaces;
     private int freeTrackSpaces;
 
