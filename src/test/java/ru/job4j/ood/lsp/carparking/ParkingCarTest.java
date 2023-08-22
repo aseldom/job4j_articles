@@ -12,7 +12,7 @@ class ParkingCarTest {
         int trackSpace = 3;
         Parking parking1 = new ParkingCar(carSpace, trackSpace);
         Car pas1 = new PassengerCar(1, "a1");
-        Car pas2= new PassengerCar(1, "a2");
+        Car pas2 = new PassengerCar(1, "a2");
         Car pas3 = new PassengerCar(1, "a3");
         assertThat(pas1.park(parking1)).isTrue();
         assertThat(parking1.park(pas2)).isTrue();
