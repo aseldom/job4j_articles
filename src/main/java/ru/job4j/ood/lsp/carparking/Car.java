@@ -1,26 +1,21 @@
 package ru.job4j.ood.lsp.carparking;
 
-public class Car {
+public interface Car {
 
-    String name;
-    int size;
-    String number;
+    int getSize();
 
-    public Car(String name, int size, String number) {
-        this.name = name;
-        this.size = size;
-        this.number = number;
-    }
+    String getNumber();
 
-    public String getName() {
-        return name;
-    }
+    boolean getTypeParkingPlace();
 
-    public int getSize() {
-        return size;
-    }
+    void setTypeParkingPlace(boolean simpleParkingPlace);
 
-    public String getNumber() {
-        return number;
-    }
+    boolean park(Parking parking);
+
+    boolean remove();
+
+    Parking getParking();
+
+    void setParking(Parking parking);
+
 }
