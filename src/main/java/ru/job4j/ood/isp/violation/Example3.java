@@ -1,46 +1,68 @@
 package ru.job4j.ood.isp.violation;
 
+
+/**
+ * В данном коде продемонстрировано нарушение принципа разделения интерфейсов.
+ * Интерфейс Ship реализуют два класса MotorBoat и Brigantine.
+ * Нарушение заключается в том, что к классу MotorBoat не применимы 2 метода: raiseSails() и lowerSails(),
+ * а к классу Brigantine не применим метод startEngine(),  в них придется делать "заглушки"
+ * Это является нарушением принципа разделения интерфейсов.
+ *
+ * Данное нарушение может быть исправлено путем разбиения интерфейса Ship на 2 или более интерфейсов.
+ * Например:
+ * interface SailingShip {raiseSails(); lowerSails();}
+ * interface Engine {startEngine();}
+ * interface Ship {castOffLines(); mooring();}
+ *
+ * Тогда классы будут выглядеть так:
+ * class MotorBoat implements Ship, Engine {}
+ * class Brigantine implements Ship, SailingShip {}
+ */
+
+
 /*
- interface Worker {
-    void work();
-    void eat();
-    void sleep();
-    void code();
+ interface Ship {
+    void castOffLines();
+    void mooring();
+    void raiseSails();
+    void lowerSails();
+    void startEngine();
 }
 
-class Programmer implements Worker {
-    public void work() {
-         работать
+class MotorBoat implements Ship {
+    void castOffLines() {
+        отдать швартовы
+     }
+
+    void mooring() {
+        пришвартоваться
     }
-    
-    public void eat() {
-         есть
+    void raiseSails() {
+        поднять паруса (неприменимо)
     }
-    
-    public void sleep() {
-         спать
+    void lowerSails() {
+        спустить паруса (неприменимо)
     }
-    
-    public void code() {
-         писать код
+    void startEngine() {
+        запустить двигатель
     }
 }
 
-class Cook implements Worker {
-    public void work() {
-         работать
+class Brigantine implements Ship {
+    void castOffLines() {
+        отдать швартовы
+     }
+    void mooring() {
+        пришвартоваться
     }
-    
-    public void eat() {
-         есть
+    void raiseSails() {
+        поднять паруса
     }
-    
-    public void sleep() {
-         спать
+    void lowerSails() {
+        спустить паруса
     }
-    
-    public void code() {
-         ??
+    void startEngine() {
+        запустить двигатель (неприменимо)
     }
 }
        
