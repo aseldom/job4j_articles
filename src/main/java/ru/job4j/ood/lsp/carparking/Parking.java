@@ -4,14 +4,16 @@ import java.util.List;
 
 public interface Parking {
 
-    boolean park(Car car);
-
-    boolean remove(String number);
-
     List<Car> getAllCars();
 
     int getFreeCarSpaces();
 
-    int getFreeTrackSpaces();
+    void setFreeCarSpaces(int freeCarSpaces);
+
+    int getFreeTruckSpaces();
+
+    void setFreeTruckSpaces(int freeTrackSpaces);
+
+    boolean addCar(Car car);
 
 }

@@ -4,8 +4,6 @@ public interface Car {
 
     int getSize();
 
-    String getNumber();
-
     boolean getTypeParkingPlace();
 
     void setTypeParkingPlace(boolean simpleParkingPlace);

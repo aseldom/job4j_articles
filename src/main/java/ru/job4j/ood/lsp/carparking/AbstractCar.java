@@ -26,20 +26,6 @@ public abstract class AbstractCar implements Car {
         return size;
     }
 
-    public String getNumber() {
-        return number;
-    }
-
-    @Override
-    public boolean park(Parking parking) {
-        return parking.park(this);
-    }
-
-    @Override
-    public boolean remove() {
-        return parking.remove(this.getNumber());
-    }
-
     @Override
     public Parking getParking() {
         return parking;

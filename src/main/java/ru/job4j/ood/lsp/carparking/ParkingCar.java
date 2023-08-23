@@ -15,59 +15,6 @@ public class ParkingCar implements Parking {
     }
 
     @Override
-    public boolean park(Car car) {
-        boolean res = false;
-        int size = car.getSize();
-        if (size > 1) {
-            if (freeTrackSpaces > 0) {
-                freeTrackSpaces--;
-                car.setTypeParkingPlace(false);
-                allCars.add(car);
-                res = true;
-            } else if (size <= freeCarSpaces) {
-                freeCarSpaces -= size;
-                car.setTypeParkingPlace(true);
-                allCars.add(car);
-                res = true;
-            }
-        } else if (size <= freeCarSpaces) {
-            freeCarSpaces -= size;
-            allCars.add(car);
-            res = true;
-        }
-        if (res) {
-            car.setParking(this);
-        }
-        return res;
-    }
-
-    @Override
-    public boolean remove(String number) {
-        boolean res = false;
-        Car car = findByNumber(number);
-        if (car != null) {
-            res = allCars.remove(car);
-            if (car.getTypeParkingPlace()) {
-                freeCarSpaces += car.getSize();
-            } else {
-                freeTrackSpaces++;
-            }
-        }
-        return res;
-    }
-
-    private Car findByNumber(String number) {
-        Car res = null;
-        for (Car car : allCars) {
-            if (car.getNumber().equals(number)) {
-                res = car;
-                break;
-            }
-        }
-        return res;
-    }
-
-    @Override
     public List<Car> getAllCars() {
         return allCars;
     }
@@ -76,7 +23,20 @@ public class ParkingCar implements Parking {
         return freeCarSpaces;
     }
 
-    public int getFreeTrackSpaces() {
+    public int getFreeTruckSpaces() {
         return freeTrackSpaces;
+    }
+
+    public void setFreeCarSpaces(int freeCarSpaces) {
+        this.freeCarSpaces = freeCarSpaces;
+    }
+
+    public void setFreeTruckSpaces(int freeTrackSpaces) {
+        this.freeTrackSpaces = freeTrackSpaces;
+    }
+
+    @Override
+    public boolean addCar(Car car) {
+        return allCars.add(car);
     }
 }
