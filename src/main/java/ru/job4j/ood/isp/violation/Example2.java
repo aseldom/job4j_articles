@@ -16,6 +16,7 @@ package ru.job4j.ood.isp.violation;
  * Тогда классы будут выглядеть так:
  * class Truck implements MachineArea, WorkCargoArea {}
  * class Car implements MachineArea {}
+ *
  */
 
 /*

@@ -17,6 +17,7 @@ package ru.job4j.ood.isp.violation;
  * Тогда классы будут выглядеть так:
  * class MotorBoat implements Ship, Engine {}
  * class Brigantine implements Ship, SailingShip {}
+ *
  */
 
 

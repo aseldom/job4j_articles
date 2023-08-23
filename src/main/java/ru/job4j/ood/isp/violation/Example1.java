@@ -16,6 +16,7 @@ package ru.job4j.ood.isp.violation;
  * Тогда классы будут выглядеть так:
  * class Worker implements Human, Working {}
  * class Robot implements Working, Fixing {}
+ *
  */
 
 /*
