@@ -38,12 +38,12 @@ public class SimpleMenuTest {
                 .isEqualTo(menu.select("Выйти на улицу").get());
 
         menu.forEach(i -> System.out.println(i.getNumber() + i.getName()));
-        assertThat(" 1. Сходить в магазин\n" +
-                "---- 1.1. Купить продукты\n" +
-                "-------- 1.1.1. Купить хлеб\n" +
-                "-------- 1.1.2. Купить молоко\n" +
-                " 2. Покормить собаку\n" +
-                " 3. Выйти на улицу\n" +
-                "---- 3.1. Погулять\n").isEqualTo(menuPrinter.print(menu));
+        assertThat(" 1. Сходить в магазин\n"
+                + "---- 1.1. Купить продукты\n"
+                + "-------- 1.1.1. Купить хлеб\n"
+                + "-------- 1.1.2. Купить молоко\n"
+                + " 2. Покормить собаку\n"
+                + " 3. Выйти на улицу\n"
+                + "---- 3.1. Погулять\n").isEqualTo(menuPrinter.print(menu));
     }
 }
