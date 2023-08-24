@@ -8,13 +8,12 @@ public class TodoApp {
 
     public static final ActionDelegate DEFAULT_ACTION = () -> System.out.println("Some action");
 
-    private final String appMenu = """
-            Выберите нужное действие:
-            1. Добавить элемент в корень меню;
-            2. Добавить элемент к родительскому элементу;
-            3. Вызвать действие, привязанное к пункту меню (действие можно сделать константой,
-            4. Вывести меню в консоль.
-            5. Выход из программы""";
+    private final String appMenu = "Выберите нужное действие:\n"
+            + "1. Добавить элемент в корень меню\n"
+            + "2. Добавить элемент к родительскому элементу\n"
+            + "3. Вызвать действие, привязанное к пункту меню (действие можно сделать константой\n"
+            + "4. Вывести меню в консоль\n"
+            + "5. Выход из программы";
 
     public void runAppMenu() {
         boolean run = true;
@@ -55,10 +54,8 @@ public class TodoApp {
 
     private void addMenuItem() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("""
-                Для добавления пункта в меню введите каждый раз с новой строки:\s
-                Имя предка, новый пункт меню:
-                \s""");
+        System.out.println("Для добавления пункта в меню введите каждый раз с новой строки:\n"
+                + "Имя предка, новый пункт меню:\n");
         String parent = scanner.next();
         String current = scanner.next();
         menu.add(parent, current, DEFAULT_ACTION);
@@ -75,7 +72,6 @@ public class TodoApp {
         new MenuSimplePrint().print(menu);
     }
 
-
     public int scan() {
         Scanner scanner = new Scanner(System.in);
         return Integer.parseInt(scanner.next());
@@ -89,10 +85,8 @@ public class TodoApp {
         return  res;
     }
 
-
     public static void main(String[] args) {
         TodoApp todo = new TodoApp();
         todo.runAppMenu();
-
     }
 }
