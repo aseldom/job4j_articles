@@ -19,6 +19,9 @@ public class SimpleMenuTest {
         menu.add("Сходить в магазин", "Купить продукты", STUB_ACTION);
         menu.add("Купить продукты", "Купить хлеб", STUB_ACTION);
         menu.add("Купить продукты", "Купить молоко", STUB_ACTION);
+        menu.add(Menu.ROOT, "Выйти на улицу", STUB_ACTION);
+        menu.add("Выйти на улицу", "Погулять", STUB_ACTION);
+
         assertThat(new Menu.MenuItemInfo("Сходить в магазин",
                 List.of("Купить продукты"), STUB_ACTION, "1."))
                 .isEqualTo(menu.select("Сходить в магазин").get());
@@ -29,8 +32,18 @@ public class SimpleMenuTest {
         assertThat(new Menu.MenuItemInfo(
                 "Покормить собаку", List.of(), STUB_ACTION, "2."))
                 .isEqualTo(menu.select("Покормить собаку").get());
-        menu.forEach(i -> System.out.println(i.getNumber() + i.getName()));
-        menuPrinter.print(menu);
 
+        assertThat(new Menu.MenuItemInfo("Выйти на улицу",
+                List.of("Погулять"), STUB_ACTION, "3."))
+                .isEqualTo(menu.select("Выйти на улицу").get());
+
+        menu.forEach(i -> System.out.println(i.getNumber() + i.getName()));
+        assertThat(" 1. Сходить в магазин\n" +
+                "---- 1.1. Купить продукты\n" +
+                "-------- 1.1.1. Купить хлеб\n" +
+                "-------- 1.1.2. Купить молоко\n" +
+                " 2. Покормить собаку\n" +
+                " 3. Выйти на улицу\n" +
+                "---- 3.1. Погулять\n").isEqualTo(menuPrinter.print(menu));
     }
 }
